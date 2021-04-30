@@ -1,0 +1,33 @@
+通过堡垒机连接开发机
+Host jps_host
+    User lumingfei
+    Port 22
+    Hostname bastion.jd.com
+    IdentitiesOnly yes
+    ServerAliveInterval 30
+     ###6h
+    ControlPersist yes 
+
+Host dev
+    User admin
+    Port 22
+    Hostname 11.40.17.181
+    IdentitiesOnly yes
+    ServerAliveInterval 30
+     ###6h
+    ControlPersist yes
+    ProxyCommand ssh lumingfei@jps_host -W %h:%p
+
+Host compile
+    User lumingfei
+    Port 22
+    Hostname 11.3.205.227
+    IdentitiesOnly yes
+    ServerAliveInterval 30
+     ###6h
+    ControlPersist yes
+    ProxyCommand ssh lumingfei@jps_host -W %h:%p
+    
+    
+    
+    
